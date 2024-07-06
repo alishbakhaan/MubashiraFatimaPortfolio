@@ -1,108 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import Carousel from 'react-bootstrap/Carousel';
-// import ProjectDetailsModal from './ProjectDetailsModal';
-// import image1 from '../images/web.png';
-// import image2 from '../images/App.jpg';
-// import image3 from '../images/Graphic.webp';
-// import image4 from '../images/videoeditor.jpg';
-// import image5 from '../images/2D Designs.png';
-// import image6 from '../images/3D.webp';
-// import image7 from '../images/arch.png';
-// import { useNavigate } from 'react-router-dom';
-
-// const carouselItems = [
-//   {
-//     images: [image1],
-//     navigateTo: '/website',
-//   },
-//   {
-//     images: [image2],
-//     navigateTo: '/app',
-//   },
-//   {
-//     images: [image3],
-//     navigateTo: '/graphic',
-//   },
-//   {
-//     images: [image4],
-//     navigateTo: '/video',
-//   },
-//   {
-//     images: [image5],
-//     navigateTo: '/2D',
-//   },
-//   {
-//     images: [image6],
-//     navigateTo: '/3D',
-//   },
-//   {
-//     images: [image7],
-//     navigateTo: '/architecture',
-//   }
-// ];
-
-// function ControlledCarousel() {
-//   const [index, setIndex] = useState(0);
-//   const [modalShow, setModalShow] = useState(false);
-//   const [modalData, setModalData] = useState(null);
-//   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setIsMobile(window.innerWidth <= 768);
-//     };
-
-//     window.addEventListener('resize', handleResize);
-
-//     return () => {
-//       window.removeEventListener('resize', handleResize);
-//     };
-//   }, []);
-
-//   const handleSelect = (selectedIndex) => {
-//     setIndex(selectedIndex);
-//   };
-
-//   const handleSlideClick = (slideData) => {
-//     setModalData(slideData);
-//     setModalShow(true);
-//   };
-
-//   return (
-//     <div>
-//       <Carousel activeIndex={index} onSelect={handleSelect}>
-//         {carouselItems.map((item, idx) => (
-//           <Carousel.Item key={idx} onClick={() => handleSlideClick(item)}>
-//             <img
-//               src={item.images[0]}
-//               alt={`Slide ${idx}`}
-//               style={{
-//                 width: '100%',
-//                 height: isMobile ? '0%' : '800px', // Adjust height based on screen size
-//                 objectFit: 'contain',
-//                 backgroundColor: '#D7CAAA'
-//               }}
-//             />
-//           </Carousel.Item>
-//         ))}
-//       </Carousel>
-
-//       {modalData && (
-//         <ProjectDetailsModal
-//           show={modalShow}
-//           onHide={() => setModalShow(false)}
-//           data={modalData}
-//           navigate={navigate} // Pass the navigate function as a prop
-//         />
-//       )}
-//     </div>
-//   );
-// }
-
-// export default ControlledCarousel;
-
-
 import React, { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import ProjectDetailsModal from './ProjectDetailsModal';
@@ -123,30 +18,51 @@ const carouselItems = [
   {
     images: [image1],
     navigateTo: '/Website Designing',
+    texts: [
+      "Create visually appealing and user-friendly websites that seamlessly blend form and function."
+    ],
   },
   {
     images: [image2],
     navigateTo: '/App Development',
+    texts: [
+      "Develop robust and scalable mobile applications for both Android and iOS platforms."
+    ],
   },
   {
     images: [image3],
     navigateTo: '/Graphic Designing',
+    texts: [
+      "Craft stunning visual content to captivate and engage your audience."
+    ],
   },
   {
     images: [image4],
     navigateTo: '/Video Editing',
+    texts: [
+      "Create compelling video content that tells your story effectively"
+    ],
   },
   {
     images: [image5],
     navigateTo: '/2D Designer',
+    texts: [
+      "Create intricate 2D graphics for animations, games, and multimedia projects."
+    ],
   },
   {
     images: [image6],
     navigateTo: '/3D Designer',
+    texts: [
+      "Develop realistic 3D models and animations for various applications, from gaming to architectural visualization."
+    ],
   },
   {
     images: [image7],
     navigateTo: '/Architecture Designing',
+    texts: [
+      "Design innovative and sustainable architectural solutions that balance functionality and aesthetics"
+    ],
   }
 ];
 
@@ -212,8 +128,9 @@ function Projects() {
                   <Card.Body style={{padding: '50px 50px'}}>
                     <Card.Title className="card-title-custom">{item.navigateTo.replace('/', '')}</Card.Title>
                     <Card.Text className="card-text-custom">
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
+                      {item.texts.map((text, textIdx) => (
+                        <p key={textIdx}>{text}</p>
+                      ))}
                     </Card.Text>
                     <Button className="btn-custom" onClick={() => navigate(item.navigateTo)}>Click Me</Button>
                   </Card.Body>
@@ -237,9 +154,3 @@ function Projects() {
 }
 
 export default Projects;
-
-
-
-
-
-  
