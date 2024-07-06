@@ -929,7 +929,16 @@ a:hover {
     font-size: 1rem;
     line-height: 1.6;
   }
+  .card-title-custom {
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
 
+  .card-text-custom {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 996px) {
@@ -942,6 +951,7 @@ a:hover {
 /* App.scss */
 .card-custom {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
